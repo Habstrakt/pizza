@@ -16,7 +16,6 @@ import ProductSkeleton from "../components/ProductSkeleton";
 import Filter, { sortLists } from "../components/Filter";
 import Categories from "../components/Categories";
 //import Pagination from "../components/Pagination";
-import { SearchContext } from "../App";
 import { fetchPizzas } from "../redux/slices/pizzaSlice";
 
 const Home = () => {
@@ -25,13 +24,11 @@ const Home = () => {
   const isSearch = useRef(false);
   const isMounted = useRef(false);
 
-  const { categoryId, sort, currentPage } = useSelector(
+  const { categoryId, sort, currentPage, searchValue } = useSelector(
     (state) => state.filter
   );
 
   const { items, status } = useSelector((state) => state.pizza);
-
-  const { searchValue } = React.useContext(SearchContext);
 
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
